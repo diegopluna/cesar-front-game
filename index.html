@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Batalha Naval - Home</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body class="setup-page">
+    <div class="container">
+      <header class="game-header">
+        <h1>Batalha Naval</h1>
+        <p class="subtitle">Prepare-se para o combate!</p>
+      </header>
+
+      <main class="setup-container">
+        <div class="setup-card">
+          <h2>Configuração dos Jogadores</h2>
+          <div class="player-setup">
+            <div class="input-group">
+              <label for="player1">Jogador 1:</label>
+              <input type="text" id="player1" placeholder="Nome do Jogador 1" maxlength="20" required />
+            </div>
+          </div>
+          <div class="player-setup">
+            <div class="input-group">
+              <label for="player2">Jogador 2:</label>
+              <input type="text" id="player2" placeholder="Nome do Jogador 2" maxlength="20" required />
+            </div>
+          </div>
+          <div class="rules-section">
+            <h3>📋 Regras do Jogo</h3>
+            <ul class="rules-list">
+              <li>Grade 10x10 para cada jogador</li>
+              <li>Porta-aviões (5 quadrados)</li>
+              <li>Encouraçado (4 quadrados)</li>
+              <li>Submarino (3 quadrados)</li>
+              <li>Cruzador (3 quadrados)</li>
+              <li>Destroyer (2 quadrados)</li>
+              <li>Posicione seus navios estrategicamente</li>
+              <li>Ataque o tabuleiro inimigo</li>
+              <li>Primeiro a afundar todos os navios vence!</li>
+            </ul>
+          </div>
+
+          <button id="startButton" class="btn-primary">
+            Iniciar Jogo 🚀
+          </button>
+        </div>
+      </main>
+    </div>
+
+    <script>
+      document.getElementById("startButton").addEventListener("click", function () {
+        const player1 = document.getElementById("player1").value.trim()
+        const player2 = document.getElementById("player2").value.trim()
+
+        if (!player1 || !player2) {
+          alert("Por favor, insira os nomes de ambos os jogadores!")
+          return
+        }
+
+        if (player1 === player2) {
+          alert("Os jogadores devem ter nomes diferentes")
+          return
+        }
+
+        const params = new URLSearchParams({
+          player1: player1,
+          player2: player2
+        })
+
+        window.location.href = `setup.html?${params.toString()}`
+      })
+
+      document.querySelectorAll("input").forEach((input) => {
+        input.addEventListener("keypress", function (e) {
+          if (e.key === "Enter") {
+            document.getElementById("startButton").click()
+          }
+        })
+      })
+    </script>
+  </body>
+</html>

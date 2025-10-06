@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Batalha Naval - Jogo</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body class="game-page">
+    <div class="game-container">
+      <header class="game-header">
+        <h1>⚓ Batalha Naval ⚓</h1>
+        <div id="gameStatus" class="game-status"></div>
+      </header>
+
+      <div class="scoreboard">
+        <div class="player-score" id="player1Score">
+          <h3 id="player1Name">Jogador 1</h3>
+          <div class="score-details">
+            <p>Navios Restantes: <span id="p1Ships">5</span></p>
+            <p>Acertos: <span id="p1Hits">0</span></p>
+          </div>
+        </div>
+
+        <div class="vs-divider">VS</div>
+
+        <div class="player-score" id="player2Score">
+          <h3 id="player2Name">Jogador 2</h3>
+          <div class="score-details">
+            <p>Navios Restantes: <span id="p2Ships">5</span></p>
+            <p>Acertos: <span id="p2Hits">0</span></p>
+          </div>
+        </div>
+      </div>
+
+      <div class="game-boards">
+        <div class="board-section">
+          <h3 id="boardTitle1">Seu Tabuleiro</h3>
+          <table id="board1" class="game-board"></table>
+        </div>
+
+        <div class="board-section">
+          <h3 id="boardTitle2">Tabuleiro Inimigo</h3>
+          <table id="board2" class="game-board"></table>
+        </div>
+      </div>
+
+      <div class="game-info">
+        <div class="info-panel">
+          <h3>🎯 Histórico de Ataques</h3>
+          <ul id="attackHistory" class="attack-history"></ul>
+        </div>
+
+        <div class="info-panel">
+          <h3>🚢 Navios</h3>
+          <table id="shipsTable" class="ships-table">
+            <thead>
+              <tr>
+                <th>Jogador</th>
+                <th>Navios Intactos</th>
+                <th>Navios Afundados</th>
+              </tr>
+            </thead>
+            <tbody id="shipsTableBody"></tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="controls">
+        <button id="soundToggle" class="btn-secondary">
+          Som: ON 🔊
+        </button>
+        <button id="resetButton" class="btn-secondary">
+          Novo Jogo 🔄
+        </button>
+      </div>
+    </div>
+
+    <script src="sounds.js"></script>
+    <script src="game.js"></script>
+  </body>
+</html>

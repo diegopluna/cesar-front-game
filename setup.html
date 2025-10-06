@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Batalha Naval - Posicionar Navios</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body class="setup-page">
+    <div class="container">
+      <header class="game-header">
+        <h1>⚓ Batalha Naval ⚓</h1>
+        <p class="subtitle" id="setupPlayerName">Posicione seus navios</p>
+      </header>
+
+      <main class="ship-setup-container">
+        <div class="setup-instructions">
+          <h2>Instruções</h2>
+          <p>Clique no tabuleiro para posicionar seus navios</p>
+          <p>Clique novamente no navio para rotacionar (horizontal/vertical)</p>
+        </div>
+
+        <div class="ships-to-place">
+          <h3>Navios para posicionar:</h3>
+          <div id="shipsList" class="ships-list"></div>
+        </div>
+
+        <div class="board-container">
+          <h3>Seu Tabuleiro</h3>
+          <table id="setupBoard" class="game-board"></table>
+        </div>
+
+        <div class="setup-controls">
+          <button id="rotateButton" class="btn-secondary">Rotacionar (R)</button>
+          <button id="clearButton" class="btn-secondary">Limpar Tabuleiro</button>
+          <button id="randomButton" class="btn-secondary">Posicionamento Aleatório</button>
+          <button id="readyButton" class="btn-primary" disabled>Pronto!</button>
+        </div>
+      </main>
+    </div>
+
+    <script src="setup.js"></script>
+  </body>
+</html>
