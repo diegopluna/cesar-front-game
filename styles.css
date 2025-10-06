@@ -520,13 +520,16 @@ body {
 
 .game-board td.hit {
   background: radial-gradient(circle, #ff0000 0%, #660000 100%);
-  animation: explosionFlash 0.8s ease-out;
   box-shadow: 0 0 25px rgba(255, 0, 0, 1), inset 0 0 15px rgba(0, 0, 0, 0.8);
   position: relative;
   overflow: visible;
 }
 
-.game-board td.hit::before {
+.game-board td.hit.animate {
+  animation: explosionFlash 0.8s ease-out;
+}
+
+.game-board td.hit.animate::before {
   content: "";
   position: absolute;
   top: 50%;
@@ -550,18 +553,24 @@ body {
   transform: translate(-50%, -50%);
   color: #ffff00;
   text-shadow: 0 0 10px #ff0000, 0 0 20px #ff0000, 2px 2px 4px #000000;
-  animation: hitImpact 0.8s ease-out;
   z-index: 5;
+}
+
+.game-board td.hit.animate::after {
+  animation: hitImpact 0.8s ease-out;
 }
 
 .game-board td.miss {
   background: #1a1a1a;
-  animation: splashRipple 0.6s ease-out;
   box-shadow: 0 0 15px rgba(0, 255, 0, 0.3);
   position: relative;
 }
 
-.game-board td.miss::before {
+.game-board td.miss.animate {
+  animation: splashRipple 0.6s ease-out;
+}
+
+.game-board td.miss.animate::before {
   content: "";
   position: absolute;
   top: 50%;
@@ -584,17 +593,23 @@ body {
   transform: translate(-50%, -50%);
   color: #00ff00;
   text-shadow: 0 0 10px #00ff00, 0 0 20px #00ff00;
+}
+
+.game-board td.miss.animate::after {
   animation: missDropIn 0.6s ease-out;
 }
 
 .game-board td.sunk {
   background: radial-gradient(circle, #330000 0%, #000000 100%);
   box-shadow: 0 0 20px rgba(255, 0, 0, 0.8), inset 0 0 20px rgba(255, 0, 0, 0.5);
-  animation: sunkDestruction 1s ease-out;
   position: relative;
 }
 
-.game-board td.sunk::before {
+.game-board td.sunk.animate {
+  animation: sunkDestruction 1s ease-out;
+}
+
+.game-board td.sunk.animate::before {
   content: "";
   position: absolute;
   top: 0;
@@ -614,6 +629,9 @@ body {
   transform: translate(-50%, -50%);
   color: #ff0000;
   text-shadow: 0 0 10px #ff0000, 0 0 20px #ff0000, 0 0 30px #ff0000;
+}
+
+.game-board td.sunk.animate::after {
   animation: sunkReveal 1s ease-out;
 }
 

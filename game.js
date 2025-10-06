@@ -293,7 +293,7 @@ class GameUI {
     this.renderBoard(this.board2Element, defender.board, false);
   }
 
-  renderBoard(tableElement, board, showShips) {
+  renderBoard(tableElement, board, showShips, animateCell = null) {
     tableElement.innerHTML = "";
 
     for (let row = 0; row < board.size; row++) {
@@ -306,16 +306,33 @@ class GameUI {
         td.dataset.row = row;
         td.dataset.col = col;
 
+        const isAnimatedCell = animateCell && animateCell.row === row && animateCell.col === col;
+
         if (cell.isHit) {
           if (cell.hasShip) {
             const ship = board.ships[cell.shipId];
             if (ship.isSunk()) {
               td.classList.add("hit", "sunk");
+              if (isAnimatedCell) {
+                td.classList.add("animate");
+              } else {
+                td.classList.add("no-animate");
+              }
             } else {
               td.classList.add("hit");
+              if (isAnimatedCell) {
+                td.classList.add("animate");
+              } else {
+                td.classList.add("no-animate");
+              }
             }
           } else {
             td.classList.add("miss");
+            if (isAnimatedCell) {
+              td.classList.add("animate");
+            } else {
+              td.classList.add("no-animate");
+            }
           }
         } else if (showShips && cell.hasShip) {
           td.classList.add("ship");
@@ -353,7 +370,7 @@ class GameUI {
       soundManager.playSplash();
     }
 
-    this.renderBoards();
+    this.renderBoardsWithAnimation(row, col);
     this.updateScoreboard();
     this.updateAttackHistory();
     this.updateShipsTable();
@@ -367,6 +384,19 @@ class GameUI {
     } else {
       this.showTurnTransition();
     }
+  }
+
+  renderBoardsWithAnimation(attackedRow, attackedCol) {
+    const currentPlayer = this.game.currentPlayer;
+    const defender =
+      currentPlayer === this.game.player1
+        ? this.game.player2
+        : this.game.player1;
+
+    this.renderBoard(this.board1Element, currentPlayer.board, true);
+    this.renderBoard(this.board2Element, defender.board, false, { row: attackedRow, col: attackedCol });
+
+    this.updateBoardTitles();
   }
 
   showTurnTransition() {
