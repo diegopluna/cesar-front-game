@@ -7,34 +7,42 @@
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body class="setup-page">
-    <div class="container">
-      <header class="game-header">
-        <h1>⚓ Batalha Naval ⚓</h1>
-        <p class="subtitle" id="setupPlayerName">Posicione seus navios</p>
+    <div class="setup-flex-container">
+      <header class="setup-header">
+        <h1>⚓ BATALHA NAVAL ⚓</h1>
+        <p class="subtitle" id="setupPlayerName">[ POSICIONAMENTO DE NAVIOS ]</p>
       </header>
 
-      <main class="ship-setup-container">
-        <div class="setup-instructions">
-          <h2>Instruções</h2>
-          <p>Clique no tabuleiro para posicionar seus navios</p>
-          <p>Clique novamente no navio para rotacionar (horizontal/vertical)</p>
+      <main class="setup-main">
+        <div class="setup-sidebar">
+          <div class="setup-section">
+            <h3>&gt; INSTRUÇÕES</h3>
+            <p>&gt; CLIQUE PARA POSICIONAR</p>
+            <p>&gt; PRESSIONE R PARA ROTACIONAR</p>
+            <p>&gt; HOVER PARA PREVIEW</p>
+          </div>
+
+          <div class="setup-section">
+            <h3>&gt; NAVIOS DISPONÍVEIS</h3>
+            <div id="shipsList" class="ships-list"></div>
+          </div>
+
+          <div class="setup-section">
+            <h3>&gt; CONTROLES</h3>
+            <div class="setup-controls-vertical">
+              <button id="rotateButton" class="btn-secondary btn-small">↻ ROTACIONAR (R)</button>
+              <button id="clearButton" class="btn-secondary btn-small">✕ LIMPAR</button>
+              <button id="randomButton" class="btn-secondary btn-small">⚡ ALEATÓRIO</button>
+              <button id="readyButton" class="btn-primary btn-large" disabled>✓ CONFIRMAR</button>
+            </div>
+          </div>
         </div>
 
-        <div class="ships-to-place">
-          <h3>Navios para posicionar:</h3>
-          <div id="shipsList" class="ships-list"></div>
-        </div>
-
-        <div class="board-container">
-          <h3>Seu Tabuleiro</h3>
-          <table id="setupBoard" class="game-board"></table>
-        </div>
-
-        <div class="setup-controls">
-          <button id="rotateButton" class="btn-secondary">Rotacionar (R)</button>
-          <button id="clearButton" class="btn-secondary">Limpar Tabuleiro</button>
-          <button id="randomButton" class="btn-secondary">Posicionamento Aleatório</button>
-          <button id="readyButton" class="btn-primary" disabled>Pronto!</button>
+        <div class="setup-board-area">
+          <h2>&gt; TABULEIRO DE COMBATE</h2>
+          <div class="board-wrapper">
+            <table id="setupBoard" class="game-board"></table>
+          </div>
         </div>
       </main>
     </div>

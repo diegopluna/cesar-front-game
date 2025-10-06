@@ -8,71 +8,93 @@
   </head>
   <body class="game-page">
     <div class="game-container">
-      <header class="game-header">
-        <h1>⚓ Batalha Naval ⚓</h1>
-        <div id="gameStatus" class="game-status"></div>
+      <header class="game-header-bar">
+        <div class="header-section">
+          <h1>⚓ BATALHA NAVAL ⚓</h1>
+        </div>
+        <div class="header-section header-center">
+          <div id="gameStatus" class="game-status"></div>
+        </div>
+        <div class="header-section header-controls">
+          <button id="soundToggle" class="btn-icon">🔊</button>
+          <button id="resetButton" class="btn-icon">🔄</button>
+        </div>
       </header>
 
-      <div class="scoreboard">
-        <div class="player-score" id="player1Score">
-          <h3 id="player1Name">Jogador 1</h3>
-          <div class="score-details">
-            <p>Navios Restantes: <span id="p1Ships">5</span></p>
-            <p>Acertos: <span id="p1Hits">0</span></p>
+      <div class="game-layout">
+        <div class="game-top-bar">
+          <div class="scoreboard-horizontal">
+            <div class="player-card active" id="player1Score">
+              <div class="player-header">
+                <span class="player-indicator">▶</span>
+                <h3 id="player1Name">JOGADOR 1</h3>
+              </div>
+              <div class="player-stats">
+                <div class="stat-item">
+                  <span class="stat-icon">🚢</span>
+                  <span id="p1Ships">5</span>
+                </div>
+                <div class="stat-item">
+                  <span class="stat-icon">🎯</span>
+                  <span id="p1Hits">0</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="vs-separator">
+              <span class="vs-text">VS</span>
+            </div>
+
+            <div class="player-card" id="player2Score">
+              <div class="player-header">
+                <h3 id="player2Name">JOGADOR 2</h3>
+                <span class="player-indicator">◀</span>
+              </div>
+              <div class="player-stats">
+                <div class="stat-item">
+                  <span class="stat-icon">🎯</span>
+                  <span id="p2Hits">0</span>
+                </div>
+                <div class="stat-item">
+                  <span class="stat-icon">🚢</span>
+                  <span id="p2Ships">5</span>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
 
-        <div class="vs-divider">VS</div>
+        <div class="game-content">
+          <aside class="game-sidebar">
+            <div class="sidebar-panel">
+              <h4>&gt; FROTA ATIVA</h4>
+              <table id="shipsTable" class="ships-mini-table">
+                <tbody id="shipsTableBody"></tbody>
+              </table>
+            </div>
+          </aside>
 
-        <div class="player-score" id="player2Score">
-          <h3 id="player2Name">Jogador 2</h3>
-          <div class="score-details">
-            <p>Navios Restantes: <span id="p2Ships">5</span></p>
-            <p>Acertos: <span id="p2Hits">0</span></p>
-          </div>
+          <main class="game-boards-area">
+            <div class="board-wrapper">
+              <div class="board-container-game">
+                <h3 id="boardTitle1" class="board-label">&gt; SEU TABULEIRO</h3>
+                <table id="board1" class="game-board"></table>
+              </div>
+
+              <div class="board-container-game">
+                <h3 id="boardTitle2" class="board-label">&gt; TABULEIRO INIMIGO</h3>
+                <table id="board2" class="game-board"></table>
+              </div>
+            </div>
+          </main>
+
+          <aside class="game-sidebar game-sidebar-right">
+            <div class="sidebar-panel">
+              <h4>&gt; LOG DE COMBATE</h4>
+              <ul id="attackHistory" class="combat-log"></ul>
+            </div>
+          </aside>
         </div>
-      </div>
-
-      <div class="game-boards">
-        <div class="board-section">
-          <h3 id="boardTitle1">Seu Tabuleiro</h3>
-          <table id="board1" class="game-board"></table>
-        </div>
-
-        <div class="board-section">
-          <h3 id="boardTitle2">Tabuleiro Inimigo</h3>
-          <table id="board2" class="game-board"></table>
-        </div>
-      </div>
-
-      <div class="game-info">
-        <div class="info-panel">
-          <h3>🎯 Histórico de Ataques</h3>
-          <ul id="attackHistory" class="attack-history"></ul>
-        </div>
-
-        <div class="info-panel">
-          <h3>🚢 Navios</h3>
-          <table id="shipsTable" class="ships-table">
-            <thead>
-              <tr>
-                <th>Jogador</th>
-                <th>Navios Intactos</th>
-                <th>Navios Afundados</th>
-              </tr>
-            </thead>
-            <tbody id="shipsTableBody"></tbody>
-          </table>
-        </div>
-      </div>
-
-      <div class="controls">
-        <button id="soundToggle" class="btn-secondary">
-          Som: ON 🔊
-        </button>
-        <button id="resetButton" class="btn-secondary">
-          Novo Jogo 🔄
-        </button>
       </div>
     </div>
 
