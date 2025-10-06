@@ -364,7 +364,49 @@ class GameUI {
         soundManager.playVictory();
         alert(`🎉 ${result.winner} venceu o jogo! 🎉`);
       }, 500);
+    } else {
+      this.showTurnTransition();
     }
+  }
+
+  showTurnTransition() {
+    const nextPlayer = this.game.currentPlayer === this.game.player1 
+      ? this.game.player1 
+      : this.game.player2;
+    
+    const transitionOverlay = document.getElementById('turnTransition');
+    const nextPlayerNameEl = document.getElementById('nextPlayerName');
+    const timerEl = document.getElementById('transitionTimer');
+    const readyButton = document.getElementById('readyButton');
+    
+    nextPlayerNameEl.textContent = `${nextPlayer.name.toUpperCase()} - SEU TURNO`;
+    
+    transitionOverlay.classList.remove('hidden');
+    
+    let countdown = 3;
+    timerEl.textContent = countdown;
+    
+    const timerInterval = setInterval(() => {
+      countdown--;
+      if (countdown > 0) {
+        timerEl.textContent = countdown;
+      } else {
+        clearInterval(timerInterval);
+        timerEl.textContent = '✓';
+      }
+    }, 1000);
+    
+    const hideTransition = () => {
+      clearInterval(timerInterval);
+      transitionOverlay.classList.add('hidden');
+      readyButton.removeEventListener('click', hideTransition);
+    };
+    
+    readyButton.addEventListener('click', hideTransition);
+    
+    setTimeout(() => {
+      hideTransition();
+    }, 5000);
   }
 
   updateScoreboard() {
