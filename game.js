@@ -414,25 +414,39 @@ class GameUI {
     let countdown = 3;
     timerEl.textContent = countdown;
     
-    const timerInterval = setInterval(() => {
+    let timerInterval = null;
+    let autoHideTimeout = null;
+    
+    const hideTransition = () => {
+      if (timerInterval) {
+        clearInterval(timerInterval);
+        timerInterval = null;
+      }
+      if (autoHideTimeout) {
+        clearTimeout(autoHideTimeout);
+        autoHideTimeout = null;
+      }
+      transitionOverlay.classList.add('hidden');
+      readyButton.removeEventListener('click', hideTransition);
+      this.renderBoards();
+    };
+    
+    timerInterval = setInterval(() => {
       countdown--;
       if (countdown > 0) {
         timerEl.textContent = countdown;
       } else {
-        clearInterval(timerInterval);
         timerEl.textContent = '✓';
+        if (timerInterval) {
+          clearInterval(timerInterval);
+          timerInterval = null;
+        }
       }
     }, 1000);
     
-    const hideTransition = () => {
-      clearInterval(timerInterval);
-      transitionOverlay.classList.add('hidden');
-      readyButton.removeEventListener('click', hideTransition);
-    };
+    readyButton.addEventListener('click', hideTransition, { once: true });
     
-    readyButton.addEventListener('click', hideTransition);
-    
-    setTimeout(() => {
+    autoHideTimeout = setTimeout(() => {
       hideTransition();
     }, 5000);
   }
