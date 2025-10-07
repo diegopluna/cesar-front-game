@@ -395,8 +395,6 @@ class GameUI {
 
     this.renderBoard(this.board1Element, currentPlayer.board, true);
     this.renderBoard(this.board2Element, defender.board, false, { row: attackedRow, col: attackedCol });
-
-    this.updateBoardTitles();
   }
 
   showTurnTransition() {
