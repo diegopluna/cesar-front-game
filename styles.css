@@ -121,6 +121,14 @@ body {
   letter-spacing: 4px;
 }
 
+.home-creators {
+  font-size: 0.9em;
+  color: #00ff00;
+  opacity: 0.6;
+  margin-top: 10px;
+  letter-spacing: 2px;
+}
+
 .home-content {
   display: flex;
   gap: 30px;
